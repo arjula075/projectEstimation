@@ -15,7 +15,7 @@ const SprintComponent = (props) =>  {
         <div>
           <table>
           <tbody>
-            {props.sprints.map(epic =>
+            {result.future.resultMatrix.map(epic =>
               <tr><td>{epic.name}</td>{epic.sprints.map(sprint =>
                 <React.Fragment>
                   <td style={sprint.color}>{sprint.cumulativeCount}</td>

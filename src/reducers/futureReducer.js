@@ -7,8 +7,10 @@ const parameterReducer = (state = initialState, action) => {
   console.log('state', state)
   console.log('initialState', initialState)
   switch(action.type) {
-    case '':
-      return state
+    case 'FILL_RESULT_MATRIX':
+      const result = new Object()
+      result.resultMatrix = action.data.data
+      return result
     default:
       return state
   }

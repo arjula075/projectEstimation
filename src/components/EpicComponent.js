@@ -27,7 +27,7 @@ const EpicComponent = () =>  {
             <th>span</th>
             </React.Fragment>
           </tr>
-          {result.future.sprints.map(epic =>
+          {result.future.resultMatrix.map(epic =>
             <tr>
             <React.Fragment>
               <td>{epic.name}</td>
@@ -47,7 +47,7 @@ const EpicComponent = () =>  {
   }
   catch (err) {
     return (
-      <div>no data</div>
+      <div>{result.parameter.loadingState}</div>
     )
   }
 

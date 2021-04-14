@@ -20,10 +20,11 @@ const SubmitButtonComponent = () =>  {
     wipService.getAll().then(value => {
         console.log(value)
         dispatch(fillResultMatrix(value))
+        dispatch(stopLoading())
       }
     )
     console.log('stopLoading before', event)
-    dispatch(stopLoading())
+
   }
 
   return (
