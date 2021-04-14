@@ -1,10 +1,14 @@
 const initialState = {
+      parallerEpics: 3,
       avgStoriesPerWeek : 15,
       stdStoriesPerWeek :  9,
+      avgStoriesPerEpic: 6,
+      stdStoriesPerEpic: 5,
       numOfWeeksInSprint : 2,
       numOfSprintInYear : 26,
       sprintFuturesForecasted : 10,
       epicFuturesForecasted: 10,
+      bugPercentage: 0.30,
       loadingState: 'no data'
   }
 
@@ -26,11 +30,9 @@ const parameterReducer = (state = initialState, action) => {
     case 'STOP_LOADING':
       newState.loadingState = 'Here is your data, master'
       return newState
-
     default:
       return state
   }
-  return state
 }
 
 export const changeValues = (content) => {

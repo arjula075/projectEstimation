@@ -1,14 +1,9 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 
-const SprintComponent = (props) =>  {
+const SprintComponent = () =>  {
 
   const result = useSelector(state => state)
-  console.log('in SprintComponent', result)
-
-  const spacing = {borderSpacing: '5px'}
-  const bgColor = {backgroundColor: 'rgba(0,255,0,0.83)'}
-  const bgColow = {backgroundColor: 'rgba(0,255,0,0.33)'}
 
     try {
       return (
@@ -32,7 +27,7 @@ const SprintComponent = (props) =>  {
   catch (err) {
     return (
       <div>
-      {props.sprints[0]}
+      {result.parameter.loadingState}
       </div>
     )
   }

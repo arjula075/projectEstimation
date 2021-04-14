@@ -1,3 +1,5 @@
+import wipService from '../services/wipService'
+
 const initialState = {
   resultMatrix: null,
   }
@@ -8,23 +10,24 @@ const parameterReducer = (state = initialState, action) => {
   console.log('initialState', initialState)
   switch(action.type) {
     case 'FILL_RESULT_MATRIX':
-      const result = new Object()
-      result.resultMatrix = action.data.data
+      const result = {}
+      result.resultMatrix = action.data
       return result
     default:
       return state
   }
-  return state
+
 }
 
-export const fillResultMatrix = (content) => {
+export const fillResultMatrix = () => {
 
-  return {
-    type: 'FILL_RESULT_MATRIX',
-    data: {
-      data: content
-    }
-  }
+  return async dispatch => {
+   const result = await wipService.getAll()
+   dispatch({
+     type: 'FILL_RESULT_MATRIX',
+     data: result,
+   })
+ }
 }
 
 export default parameterReducer
