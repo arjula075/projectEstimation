@@ -1,8 +1,10 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 const SprintComponent = (props) =>  {
 
-  console.log('props', props)
+  const result = useSelector(state => state)
+  console.log('in SprintComponent', result)
 
   const spacing = {borderSpacing: '5px'}
   const bgColor = {backgroundColor: 'rgba(0,255,0,0.83)'}
@@ -30,7 +32,7 @@ const SprintComponent = (props) =>  {
   catch (err) {
     return (
       <div>
-      {props.sprints[0]}...
+      {props.sprints[0]}
       </div>
     )
   }

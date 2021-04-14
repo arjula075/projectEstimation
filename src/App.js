@@ -1,18 +1,14 @@
-import React, { useState }  from 'react'
+import React, { useEffect }  from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
 import SprintComponent from './components/SprintComponent'
 import EpicComponent from './components/EpicComponent'
+import InputComponent from './components/InputComponent'
+import SubmitButtonComponent from './components/SubmitButtonComponent'
 
 const App = () => {
-  const [result, setResult] = useState([['waiting for data', 'waiting for data']])
-
-   axios
-     .get('http://localhost:3001/api/notes')
-     .then(response => {
-       console.log('promise fulfilled')
-       console.log('response.data', response.data)
-       setResult(response.data)
-     })
+  const dispatch = useDispatch()
+  const result = useSelector(state => state)
 
   //const resultMatrix = wipService.createResultMatrix()
 
@@ -20,6 +16,8 @@ const App = () => {
     <div>
       <EpicComponent sprints = {result} />
       <SprintComponent sprints = {result} />
+      <InputComponent />
+      <SubmitButtonComponent />
     </div>
   )
 }
