@@ -1,5 +1,4 @@
-import React, { useEffect }  from 'react'
-import axios from 'axios'
+import React from 'react'
 import SprintComponent from './components/SprintComponent'
 import EpicComponent from './components/EpicComponent'
 import InputComponent from './components/InputComponent'

@@ -9,20 +9,17 @@ const initialState = {
       sprintFuturesForecasted : 10,
       epicFuturesForecasted: 10,
       bugPercentage: 0.30,
-      loadingState: 'no data'
+      loadingState: 'no data',
+      numberOfEpics: 70,
+      yearsForecasted: 2
   }
 
 const parameterReducer = (state = initialState, action) => {
-  console.log('action', action)
-  console.log('state', state)
-  console.log('initialState', initialState)
+
   const newState = JSON.parse(JSON.stringify(state))
   switch(action.type) {
-    case 'NUM_WEEKS_IN_SPRINT':
-      newState.numOfWeeksInSprint = action.data.data
-      return newState
-    case 'AVG_STORIES_PER_WEEK':
-      newState.avgStoriesPerWeek = action.data.data
+    case 'CHANGE_VALUES':
+      newState[action.data.type] = action.data.data
       return newState
     case 'START_LOADING':
       newState.loadingState = 'Please wait, guru meditating'
@@ -32,31 +29,24 @@ const parameterReducer = (state = initialState, action) => {
       return newState
     default:
       return state
+    }
   }
-}
 
 export const changeValues = (content) => {
 
-  switch (content.type) {
-    case 'avgStoriesPerWeek':
-      console.log('changeValues reducer', content)
-      return {
-        type: 'AVG_STORIES_PER_WEEK',
-        data: {
-          data: content.data
-        }
-      }
-    case 'numOfWeeksInSprint':
-      console.log('changeValues', content)
-      return {
-        type: 'NUM_WEEKS_IN_SPRINT',
-        data: {
-          data: content.data
-        }
-      }
-    default:
-      return content
+  // ok, this is just to has actor and parse the object to proper format
+  // I could do this also in calling function, but then this would
+  // be total pass-trhough
+
+  const result = {
+    type: 'CHANGE_VALUES',
+    data: {
+      data: content.data,
+      type: content.type
+    }
   }
+
+  return result
 
 }
 

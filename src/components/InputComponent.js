@@ -16,11 +16,40 @@ const InputComponent = () =>  {
       dispatch(changeValues(result))
 
     }
-
     try {
       return (
         <div>
           <form>
+                  <label>
+                  parallerEpics
+                    <input
+                    type="text"
+                    name="parallerEpics"
+                    value={notes.parameter.parallerEpics}
+                    onChange={handleChange}
+                    />
+                </label>
+                <br />
+                <label>
+                yearsForecasted
+                  <input
+                  type="text"
+                  name="yearsForecasted"
+                  value={notes.parameter.yearsForecasted}
+                  onChange={handleChange}
+                  />
+              </label>
+              <br />
+              <label>
+              numberOfEpics
+                <input
+                type="text"
+                name="numberOfEpics"
+                value={notes.parameter.numberOfEpics}
+                onChange={handleChange}
+                />
+            </label>
+            <br />
             <label>
             average stories done per Week
               <input

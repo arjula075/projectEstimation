@@ -5,9 +5,7 @@ const initialState = {
   }
 
 const parameterReducer = (state = initialState, action) => {
-  console.log('action', action)
-  console.log('state', state)
-  console.log('initialState', initialState)
+
   switch(action.type) {
     case 'FILL_RESULT_MATRIX':
       const result = {}
@@ -19,10 +17,10 @@ const parameterReducer = (state = initialState, action) => {
 
 }
 
-export const fillResultMatrix = () => {
+export const fillResultMatrix = (parameters) => {
 
   return async dispatch => {
-   const result = await wipService.getAll()
+   const result = await wipService.getAll(parameters)
    dispatch({
      type: 'FILL_RESULT_MATRIX',
      data: result,
